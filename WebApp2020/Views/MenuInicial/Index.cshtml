@@ -1,0 +1,132 @@
+﻿@using Microsoft.AspNetCore.Identity
+<!DOCTYPE html>
+@{
+    ViewBag.Title = "Menu Inicial";
+}
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <html>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("WEBSCORE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Administração <span class="caret"></span>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Orçamentos", "Index", "AdmOrcamentos")</li>
+                                    <li>@Html.ActionLink("Indicadores", "Index", "AdmIndicadores")</li>
+                                    <li>@Html.ActionLink("Contratos", "Index", "AdmContratos")</li>
+                                    <li>@Html.ActionLink("Relatórios", "Index", "AdmRelatorios")</li>
+                                </ul>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Financeiro <span class="caret"></span>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Contas a Receber", "Index", "FinContasReceber")</li>
+                                    <li>@Html.ActionLink("Contas a Pagar", "Index", "FinContasPagar")</li>
+                                    <li>@Html.ActionLink("Fluxo de Caixa", "Index", "FinFluxoDeCaixa")</li>
+                                    <li>@Html.ActionLink("Indicadores", "Index", "FinIndicadores")</li>
+                                    <li>@Html.ActionLink("Relatórios", "Index", "FinRelatorios")</li>
+                                </ul>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Aquisições <span class="caret"></span>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Requisições", "Index", "AquiRequisicoes")</li>
+                                    <li>@Html.ActionLink("Pedidos de Compra", "Index", "AquiPedidos")</li>
+                                    <li>@Html.ActionLink("Aprovações", "Index", "AquiAprovacoes")</li>
+                                    <li>@Html.ActionLink("Recebimentos", "Index", "AquiRecebimentos")</li>
+                                    <li>@Html.ActionLink("Relatórios", "Index", "AquiRelatorios")</li>
+                                </ul>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Comercial <span class="caret"></span>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Oportunidades", "Index", "ComOportunidades")</li>
+                                    <li>@Html.ActionLink("Orçamentos", "Index", "ComOrcamentos")</li>
+                                    <li>@Html.ActionLink("Contratos", "Index", "ComContratos")</li>
+                                    <li>@Html.ActionLink("Pedidos de Venda", "Index", "ComPedidos")</li>
+                                    <li>@Html.ActionLink("Relatórios", "Index", "ComRelatorios")</li>
+                                </ul>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Operações <span class="caret"></span>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Projetos", "Index", "OpeProjetos")</li>
+                                    <li>@Html.ActionLink("Recursos", "Index", "OpeRecursos")</li>
+                                    <li>@Html.ActionLink("Apontamentos", "Index", "OpeApontamentos")</li>
+                                    <li>@Html.ActionLink("Autorizações", "Index", "OpeAutorizacoes")</li>
+                                    <li>@Html.ActionLink("Relatórios", "Index", "OpeRelatorios")</li>
+                                </ul>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Usuários <span class="caret"></span>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Gerenciar", "Index", "SisGerenciar")</li>
+                                    <li>@Html.ActionLink("Perfis de Acesso", "Index", "SisPerfis")</li>
+                                    <li>@Html.ActionLink("Relatórios", "Index", "SisRelatorios")</li>
+                                </ul>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Configurações <span class="caret"></span>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Administrativo", "Index", "ConfAdministracao")</li>
+                                    <li>@Html.ActionLink("Financeiro", "Index", "ConfFinanceiro")</li>
+                                    <li>@Html.ActionLink("Aquisições", "Index", "ConfAquisicoes")</li>
+                                    <li>@Html.ActionLink("Comercial", "Index", "ConfComercial")</li>
+                                    <li>@Html.ActionLink("Operações", "Index", "ConfOperacoes")</li>
+                                </ul>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Suporte <span class="caret"></span>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Criar Chamado", "Index", "SupChamados")</li>
+                                    <li>@Html.ActionLink("Pesquisar Chamados", "Index", "SupPesquisar")</li>
+                                    <li>@Html.ActionLink("Atender Chamados", "Index", "SupAtendimentos")</li>
+                                    <li>@Html.ActionLink("Listar Chamados", "Index", "SupListar")</li>
+                                    <li>@Html.ActionLink("Relatórios", "Index", "SupRelatorios")</li>
+                                </ul>
+                                <partial name="_LoginPartial" />
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <a href="@Url.Action("Menu Inicial", "MenuInicial", "Index")">
+                            <li class="btnVoltar"><span class="glyphicon glyphicon-log-out"></span></li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+}
+
